@@ -6,7 +6,6 @@ phases:
       - npm install
   build:
     commands:
-      - cd /home/ubuntu/node-express-realworld-example-app
       - sed -i 's/localhost/65.1.132.122:27017/' app.js
       - echo Build started on `date`
       - echo Compiling
