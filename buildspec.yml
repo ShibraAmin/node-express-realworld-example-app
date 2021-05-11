@@ -6,7 +6,7 @@ phases:
       - npm install
   build:
     commands:
-      - sed -i 's/localhost/172.31.38.69:27017/' app.js
+      - sed -i 's/localhost/65.1.132.122:27017/' app.js
       - echo Build started on `date`
       - echo Compiling
   post_build:
