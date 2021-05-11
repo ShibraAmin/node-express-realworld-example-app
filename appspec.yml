@@ -11,7 +11,11 @@ hooks:
     - location: scripts/app_start.sh
       timeout: 300
       runas: root
-     
+   
+  Application Stop:
+    - location: scripts/appstop.sh
+      timeout: 300
+      runas: root    
 
   
 
