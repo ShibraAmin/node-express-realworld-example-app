@@ -1,4 +1,4 @@
 #!/bin/bash
 
-apt install npm -y
-npm start
+npm install
+npm run build
