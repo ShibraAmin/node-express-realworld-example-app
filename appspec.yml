@@ -5,8 +5,10 @@ files:
   - source: /
     destination: /home/ubuntu/node-express-realworld-example-app
     overwrite: true
+    
 hooks:
-
+  Before Installation:
+    - cd /home/ubuntu/node-express-realworld-example-app/buildspec.yml rm -rf *
   Application Start:
     - location: scripts/app_start.sh
       timeout: 300
