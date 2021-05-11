@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /home/ec2/server
+cd /home/ubuntu/node-express-realworld-example-app
 npm install
 npm start
