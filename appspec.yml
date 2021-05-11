@@ -2,10 +2,6 @@
 version: 0.0
 os: linux
 
-files:
-  - source: /
-    destination: /home/ec2/server
-
 hooks:
 
   BeforeInstall:
