@@ -4,6 +4,7 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/node-express-realworld-example-app
+    overwrite: true
 hooks:
 
   Application Start:
