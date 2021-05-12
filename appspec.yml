@@ -5,11 +5,11 @@ files:
     destination: /home/ubuntu/node-express-realworld-example-app/
     overwrite: true
 hooks:
-  Application Start:
+  ApplicationStart:
     - location: scripts/appstart.sh
       timeout: 300
       runas: ubuntu
-  Application Stop:
+  ApplicationStop:
     - location: scripts/appstop.sh
       timeout: 300
       runas: ubuntu   
