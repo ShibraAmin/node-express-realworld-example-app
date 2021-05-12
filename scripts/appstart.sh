@@ -1,5 +1,3 @@
 #!/bin/bash
 cd /home/ubuntu/node-express-realworld-example-app/
-pm2 start app.js
-pm2 save
-pm2 startup 
+/usr/local/bin/pm2 start /home/ubuntu/node-express-realworld-example-app/app.js -i 0 --name "app" &
