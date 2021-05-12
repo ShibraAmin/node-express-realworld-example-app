@@ -1,3 +1,3 @@
 #!/bin/bash
 cd /home/ubuntu/node-express-realworld-example-app
-pm2 start app.js
+pm2 start app.js -i 1
