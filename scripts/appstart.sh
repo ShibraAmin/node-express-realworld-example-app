@@ -1,4 +1,3 @@
 #!/bin/bash
-cd /home/ubuntu/node-express-realworld-example-app
-pm2 kill
+pm2 start /home/ubuntu/node-express-realworld-example-app/app.js
 
