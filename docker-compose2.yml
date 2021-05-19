@@ -1,0 +1,87 @@
+Dockerfile for react---->
+
+FROM node:latest
+
+RUN mkdir -p /home/node/app/node_modules
+
+WORKDIR /home/node/app
+
+COPY package.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 4100
+
+CMD [ "npm", "start" ]
+
+
+Dockerfile for node---->
+
+FROM node:latest
+
+RUN mkdir -p /home/node/app/node_modules
+
+WORKDIR /home/node/app
+
+COPY package.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]
+
+
+docker-compose.yml file to run mongo ,react and node refering dockerfile in thier folder. and giving mongo url as (mongo://name_of_service_in_docker-compose:port/databse) 
+
+
+version: '3'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - data-volume:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: /home/ubuntu/node-express-realworld-example-app/
+      dockerfile: Dockerfile
+    volumes:
+      - "/home/ubuntu//node-express-realworld-example-app:/app"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+  client:
+    build:
+      context: /home/ubuntu/react-redux-realworld-example-app/
+      dockerfile: Dockerfile
+    volumes:
+       - "/home/ubuntu/react-redux-realworld-example-app:/app"
+    ports:
+       - "4100:4100"
+    depends_on:
+       - api
+    networks:
+       - app-network
+
+networks:
+    app-network:
+      driver: bridge
+
+volumes:
+    data-volumes:
+    node_modules:
+    web-root:
+      driver: local
