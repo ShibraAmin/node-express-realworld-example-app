@@ -1,7 +1,4 @@
 version: 0.2
-env: 
-  parameter-store: 
-    HOST: "/CodeBuild/LHOST"
 phases:
   pre_build:
     commands:
@@ -9,7 +6,6 @@ phases:
       - npm install
   build:
     commands:
-      - sed -i 's|localhost|'$HOST'|' app.js
       - echo Build started on `date`
       - echo Compiling
   post_build:
