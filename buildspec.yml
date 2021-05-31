@@ -1,14 +1,27 @@
 version: 0.2
 phases:
+  pre_build:
+    commands:
+      - sed -i "s|mongo_ep|${MONGO_EP}|g" app.js
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 421320058418.dkr.ecr.ap-south-1.amazonaws.com
+
   build:
     commands:
       - echo Build started on `date`
-      - echo Compiling
+      - echo Building the Docker image...  
+      - docker build -t mern-docker-a .
+      - docker tag mern-docker-a:latest 421320058418.dkr.ecr.ap-south-1.amazonaws.com/mern-docker-a:latest
+
   post_build:
     commands:
       - echo Build completed on `date`
-# Include only the files required for your application to run.
+      - echo Pushing the Docker image...
+      - docker push 421320058418.dkr.ecr.ap-south-1.amazonaws.com/mern-docker-a:latest
+      - printf '[{"name":"mern-docker-a","imageUri":"%s"}]' 421320058418.dkr.ecr.ap-south-1.amazonaws.com/mern-docker-a:latest > imagedefinitions.json
+
 artifacts:
+  name: test-artifact
   files:
-    - '**/*'
-    
+     - imagedefinitions.json
+  discard-paths: no   
