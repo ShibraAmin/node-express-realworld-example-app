@@ -10,7 +10,7 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...  
       - docker build -t node-mongo:latest .
-      - docker tag node-mongo:1 421320058418.dkr.ecr.ap-south-1.amazonaws.com/node-mongo:latest
+      - docker tag node-mongo:latest 421320058418.dkr.ecr.ap-south-1.amazonaws.com/node-mongo:latest
 
   post_build:
     commands:
