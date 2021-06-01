@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...  
-      - sudo systemctl start docker
+      - systemctl start docker
       - docker build -t node-mongo .
       - docker tag node-mongo:latest 421320058418.dkr.ecr.ap-south-1.amazonaws.com/node-mongo:latest
 
