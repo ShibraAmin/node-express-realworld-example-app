@@ -9,15 +9,15 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...  
-      - docker build -t node-docker .
-      - docker tag mern-docker-a:latest 421320058418.dkr.ecr.ap-south-1.amazonaws.com/node-docker:latest
+      - docker build -t node-mongo .
+      - docker tag node-mongo:latest 421320058418.dkr.ecr.ap-south-1.amazonaws.com/node-mongo:latest
 
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 421320058418.dkr.ecr.ap-south-1.amazonaws.com/node-docker:latest
-      - printf '[{"name":"node-docker","imageUri":"%s"}]' 421320058418.dkr.ecr.ap-south-1.amazonaws.com/node-docker:latest > imagedefinitions.json
+      - docker push 421320058418.dkr.ecr.ap-south-1.amazonaws.com/node-mongo:latest
+      - printf '[{"name":"node-mongo","imageUri":"%s"}]' 421320058418.dkr.ecr.ap-south-1.amazonaws.com/node-mongo:latest > imagedefinitions.json
 
 artifacts:
   files:
